@@ -59,17 +59,17 @@ The goal of this project is to automate the attendance marking process using adv
     ```bash
     pip install -r requirements.txt
 3. **Set Up Firebase**
-    Create a Firebase project and enable:
-    Authentication (email/password and Google OAuth)
-    Realtime Database
-    Cloud Storage
-        Download the Firebase Admin SDK credentials and place them in the project directory (e.g., firebase-adminsdk.json).
+    - Create a Firebase project and enable:
+    - Authentication (email/password and Google OAuth)
+    - Realtime Database
+    - Cloud Storage
+    - Download the Firebase Admin SDK credentials and place them in the project directory (e.g., **firebase-adminsdk.json**).
 4. **Configure Environment Variables**
     Create a .env file in the root directory.
     ```bash 
-        FLASK_APP=app.py
+    FLASK_APP=app.py
     FLASK_ENV=development
     FIREBASE_CONFIG_PATH=path/to/firebase-adminsdk.json
 5. **Start the Server**
     ```bash
-        flask run
+    flask run
