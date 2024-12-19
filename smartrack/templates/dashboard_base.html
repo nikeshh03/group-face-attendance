@@ -1,0 +1,59 @@
+dashboard_base.html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <title>{% block title %}SmartTrack{% endblock title %}</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+    {% block extra_css %}{% endblock extra_css %}
+</head>
+<body>
+    <div class="dashboard-wrapper">
+        <aside class="sidebar">
+            <div class="sidebar-brand">
+                <h2>SmartTrack</h2>
+            </div>
+            
+            <nav class="sidebar-nav">
+                <ul>
+                    <li><a href="{% url 'dashboard:home' %}" class="nav-link">
+                        <i class="fas fa-home"></i>
+                        <span>Home</span>
+                    </a></li>
+                    <li><a href="{% url 'dashboard:mark_attendance' %}" class="nav-link">
+                        <i class="fas fa-clock"></i>
+                        <span>Mark Attendance</span>
+                    </a></li>
+                    <li><a href="{% url 'dashboard:manage_employee' %}" class="nav-link">
+                        <i class="fas fa-users"></i>
+                        <span>Manage Employee</span>
+                    </a></li>
+                </ul>
+            </nav>
+
+            <div class="sidebar-footer">
+                <form method="POST" action="{% url 'user:logout' %}">
+                    {% csrf_token %}
+                    <button type="submit" class="logout-btn">
+                        <i class="fas fa-sign-out-alt"></i>
+                        Logout
+                    </button>
+                </form>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <div class="content-wrapper">
+                {% block dashboard_content %}{% endblock dashboard_content %}
+            </div>
+        </main>
+    </div>
+
+    {% block extra_js %}{% endblock extra_js %}
+</body>
+</html>

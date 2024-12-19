@@ -1,0 +1,35 @@
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <title>{% block title %}SmartTrack{% endblock title %}</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    {% block extra_css %}{% endblock extra_css %}
+</head>
+<body>
+    <nav>
+        <div class="logo">SmartTrack</div>
+        <div class="nav-links">
+            <a href="{% url 'home' %}">Home</a>
+            <a href="#features">Features</a>
+            <a href="#about">About</a>
+            <a href="#contact">Contact</a>
+            <a href="{% url 'user:login' %}">Login</a>
+        </div>
+    </nav>
+
+    <main>
+        {% block content %}
+        {% endblock content %}
+    </main>
+
+    <footer>
+        <p>&copy; 2024 SmartTrack. All rights reserved.</p>
+    </footer>
+
+    {% block extra_js %}{% endblock extra_js %}
+</body>
+</html>

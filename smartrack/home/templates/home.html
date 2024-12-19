@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Home - SmartTrack{% endblock title %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/home.css' %}">
+{% endblock extra_css %}
+
+{% block content %}
+<section class="hero">
+    <div class="hero-content">
+        <h1>Smart Attendance Tracking with Face Recognition</h1>
+        <p>Track attendance effortlessly with our advanced multi-face detection system. Perfect for schools, universities, and organizations.</p>
+        <button class="cta-button">Get Started</button>
+    </div>
+    <div class="hero-image">
+        <img src="{% static 'images/face-recognition.svg' %}" alt="Face Recognition Illustration">
+    </div>
+</section>
+
+<section class="features" id="features">
+    <h2>Key Features</h2>
+    <div class="feature-grid">
+        <div class="feature-card">
+            <h3>Multi-Face Detection</h3>
+            <p>Detect multiple faces simultaneously in real-time using a single camera</p>
+        </div>
+        <div class="feature-card">
+            <h3>Real-time Tracking</h3>
+            <p>Monitor attendance instantly with our advanced tracking system</p>
+        </div>
+        <div class="feature-card">
+            <h3>Secure & Reliable</h3>
+            <p>Enterprise-grade security for your attendance data</p>
+        </div>
+        <div class="feature-card">
+            <h3>Easy Management</h3>
+            <p>Intuitive admin dashboard for easy monitoring and reporting</p>
+        </div>
+    </div>
+</section>
+{% endblock content %}

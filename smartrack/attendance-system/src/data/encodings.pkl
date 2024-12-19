@@ -1,0 +1,3 @@
+The file `src/data/encodings.pkl` is a binary file that stores serialized data. As such, it cannot be represented in plain text. You will need to generate this file by running the appropriate code in your application that saves the face encodings and associated names into it.
+
+Please open the file to view or modify its contents as needed.

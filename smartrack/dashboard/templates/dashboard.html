@@ -1,0 +1,56 @@
+{% extends 'dashboard_base.html' %}
+
+{% block title %}Dashboard - SmartTrack{% endblock title %}
+
+{% block nav %}{% endblock nav %}
+
+{% block extra_css %}
+    {% load static %}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+{% endblock extra_css %}
+
+{% block content %}
+<div class="dashboard-wrapper">
+    <aside class="sidebar">
+        <div class="sidebar-brand">
+            <h2>SmartTrack</h2>
+        </div>
+        
+        <nav class="sidebar-nav">
+            <ul>
+                <li><a href="{% url 'dashboard:home' %}" class="nav-link">
+                    <i class="fas fa-home"></i>
+                    <span>Home</span>
+                </a></li>
+                <li><a href="{% url 'dashboard:mark_attendance' %}" class="nav-link">
+                    <i class="fas fa-clock"></i>
+                    <span>Mark Attendance</span>
+                </a></li>
+                <li><a href="{% url 'dashboard:manage_employee' %}" class="nav-link">
+                    <i class="fas fa-users"></i>
+                    <span>Manage Employee</span>
+                </a></li>
+            </ul>
+        </nav>
+
+        <div class="sidebar-footer">
+            <form method="POST" action="{% url 'user:logout' %}">
+                {% csrf_token %}
+                <button type="submit" class="logout-btn">
+                    <i class="fas fa-sign-out-alt"></i>
+                    Logout
+                </button>
+            </form>
+        </div>
+    </aside>
+
+    <main class="main-content">
+        <div class="content-wrapper">
+            {% block dashboard_content %}
+            <h1>Welcome to Dashboard</h1>
+            {% endblock dashboard_content %}
+        </div>
+    </main>
+</div>
+{% endblock content %}
