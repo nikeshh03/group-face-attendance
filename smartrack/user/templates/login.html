@@ -29,6 +29,9 @@
             {% endif %}
             <button type="submit" class="login-button">Login</button>
         </form>
+        <div class="register-link">
+            <p>Don't have an account?</p>
+            <a href="{% url 'user:register' %}" class="create-account-btn">Create Account</a>
     </div>
 </div>
 {% endblock content %}

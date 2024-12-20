@@ -6,5 +6,5 @@ app_name = 'dashboard'
 urlpatterns = [
     path('', views.home, name='home'),
     path('mark-attendance/', views.mark_attendance, name='mark_attendance'),
-    path('manage-employee/', views.manage_employee, name='manage_employee'),
+    path('view-attendance/', views.view_attendance, name='view_attendance'),
 ]

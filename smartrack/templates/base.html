@@ -14,10 +14,15 @@
         <div class="logo">SmartTrack</div>
         <div class="nav-links">
             <a href="{% url 'home' %}">Home</a>
-            <a href="#features">Features</a>
-            <a href="#about">About</a>
-            <a href="#contact">Contact</a>
-            <a href="{% url 'user:login' %}">Login</a>
+            <a href="{% url 'about' %}">About</a>
+            <a href="{% url 'features' %}">Features</a>
+            <a href="{% url 'contact' %}">Contact</a>
+            {% if user.is_authenticated %}
+            <a href="{% url 'dashboard:home' %}" class="btn-primary">Dashboard</a>
+            <a href="{% url 'user:logout' %}" class="btn-secondary">Logout</a>
+        {% else %}
+            <a href="{% url 'user:login' %}" class="btn-primary">Login</a>
+        {% endif %}
         </div>
     </nav>
 

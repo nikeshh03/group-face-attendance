@@ -1,0 +1,35 @@
+{% extends 'dashboard_base.html' %}
+
+{% block dashboard_content %}
+<div class="attendance-container">
+    <div class="video-feed">
+        <h2>Face Recognition Attendance</h2>
+        <img src="{% url 'attendance:video_feed' %}" width="1140" height="780">
+    </div>
+</div>
+
+<style>
+.attendance-container {
+    display: flex;
+    gap: 2rem;
+    padding: 20px;
+}
+.video-feed {
+    flex: 2;
+}
+.attendance-log {
+    flex: 1;
+    padding: 20px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    max-height: 480px;
+    overflow-y: auto;
+}
+.attendance-entry {
+    padding: 10px;
+    border-bottom: 1px solid #dee2e6;
+    display: flex;
+    justify-content: space-between;
+}
+</style>
+{% endblock %}

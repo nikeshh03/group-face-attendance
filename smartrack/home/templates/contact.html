@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/contact.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="contact-container">
+    <section class="contact-hero">
+        <h1>Contact Us</h1>
+        <p>Get in Touch with Your Local MGNREGA Office</p>
+    </section>
+
+    <section class="contact-info">
+        <div class="contact-grid">
+            <div class="contact-card">
+                <i class="fas fa-envelope"></i>
+                <h3>Email</h3>
+                <p>{{ contacts.email }}</p>
+            </div>
+            <div class="contact-card">
+                <i class="fas fa-phone"></i>
+                <h3>Phone</h3>
+                <p>{{ contacts.phone }}</p>
+            </div>
+            <div class="contact-card">
+                <i class="fas fa-clock"></i>
+                <h3>Working Hours</h3>
+                <p>{{ contacts.hours }}</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="office-locations">
+        <h2>Our Offices</h2>
+        <div class="offices-grid">
+            {% for office in offices %}
+            <div class="office-card">
+                <h3>{{ office.name }}</h3>
+                <p>{{ office.address }}</p>
+                <p>{{ office.phone }}</p>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+</div>
+{% endblock %}

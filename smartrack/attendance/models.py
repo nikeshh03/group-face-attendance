@@ -8,3 +8,7 @@ class Attendance(models.Model):
     
     class Meta:
         unique_together = ['name', 'date']
+        ordering = ['-date', '-time']
+    
+    def __str__(self):
+        return f"{self.name} - {self.date}"

@@ -1,0 +1,61 @@
+{% extends 'dashboard_base.html' %}
+{% load static %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/attendance_view.css' %}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+{% endblock %}
+{% block dashboard_content %}
+<div class="attendance-view-container">
+            <h2>Attendance Records</h2>
+            <div class="total-records">
+                Total Records: <span>{{ attendance_records.count }}</span>
+            </div>
+        </div>
+
+        <div class="table-container">
+            <table class="attendance-table">
+                <thead>
+                    <tr>
+                        <th class="sortable" data-sort="name">Name <i class="fas fa-sort"></i></th>
+                        <th class="sortable" data-sort="date">Date <i class="fas fa-sort"></i></th>
+                        <th class="sortable" data-sort="time">Time <i class="fas fa-sort"></i></th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for record in attendance_records %}
+                    <tr>
+                        <td>{{ record.name }}</td>
+                        <td>{{ record.date }}</td>
+                        <td>{{ record.time|time:"H:i:s" }}</td>
+                        <td><span class="status-badge success">Present</span></td>
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td colspan="4" class="no-records">
+                            <div class="empty-state">
+                                <i class="fas fa-calendar-times"></i>
+                                <p>No attendance records found</p>
+                            </div>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <div class="pagination">
+            <button class="prev-btn" disabled><i class="fas fa-chevron-left"></i></button>
+            <div class="page-numbers">
+                <span class="active">1</span>
+                <span>2</span>
+                <span>3</span>
+            </div>
+            <button class="next-btn"><i class="fas fa-chevron-right"></i></button>
+        </div>
+    </div>
+</div>
+{% block extra_js %}
+<script src="{% static 'js/attendance_view.js' %}"></script>
+{% endblock %}
+{% endblock %}

@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/about.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="about-container">
+    <section class="about-hero">
+        <h1>About MGNREGA</h1>
+        <p>Transforming Rural India Through Guaranteed Employment</p>
+    </section>
+
+    <section class="stats-section">
+        <div class="stats-grid">
+            {% for key, value in stats.items %}
+            <div class="stat-card">
+                <span class="stat-number">{{ value }}</span>
+                <span class="stat-label">{{ key|title }}</span>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+
+    <section class="objectives-section">
+        <h2>Our Objectives</h2>
+        <div class="objectives-grid">
+            {% for objective in objectives %}
+            <div class="objective-card">
+                <i class="fas {{ objective.icon }}"></i>
+                <h3>{{ objective.title }}</h3>
+                <p>{{ objective.description }}</p>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+
+    <section class="impact-section">
+        <h2>Program Impact</h2>
+        <div class="impact-content">
+            <p>Since its inception in 2005, MGNREGA has transformed rural India by providing employment security to millions of households.</p>
+        </div>
+    </section>
+</div>
+{% endblock %}

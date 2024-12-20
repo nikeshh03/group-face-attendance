@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/features.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="features-container">
+    <section class="features-hero">
+        <h1>Program Features</h1>
+        <p>Comprehensive Employment Guarantee Scheme</p>
+    </section>
+
+    <section class="features-grid">
+        {% for feature in features %}
+        <div class="feature-card">
+            <i class="fas {{ feature.icon }}"></i>
+            <h3>{{ feature.title }}</h3>
+            <p>{{ feature.description }}</p>
+        </div>
+        {% endfor %}
+    </section>
+
+    <section class="benefits-section">
+        <h2>Program Benefits</h2>
+        <div class="benefits-grid">
+            <div class="benefit-card">
+                <h3>Economic Security</h3>
+                <p>Guaranteed income for rural households</p>
+            </div>
+            <div class="benefit-card">
+                <h3>Social Empowerment</h3>
+                <p>Priority to marginalized communities</p>
+            </div>
+            <div class="benefit-card">
+                <h3>Rural Development</h3>
+                <p>Creation of sustainable assets</p>
+            </div>
+        </div>
+    </section>
+</div>
+{% endblock %}
