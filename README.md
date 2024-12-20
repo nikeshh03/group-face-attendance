@@ -1,79 +1,123 @@
-# Face Attendance Marking and Management System
+# SmartTrack: Face Recognition Attendance System
 
-## 📖 Project Overview
+## Overview
+SmartTrack is an AI-powered face recognition attendance system designed to streamline and automate the process of tracking attendance. The system integrates with a Django backend, uses OpenCV for real-time face detection, and provides a user-friendly dashboard for monitoring and reporting attendance data.
 
-The **Face Attendance Marking and Management System** is a real-time facial recognition-based attendance solution. It identifies multiple employees standing in front of a camera and differentiates between employees and non-employees. The system is lightweight, user-friendly, and integrates seamlessly with Firebase for authentication, data storage, and management.
-
----
-
-## 🎯 Purpose
-
-The goal of this project is to automate the attendance marking process using advanced face recognition technology. This system:
-- Saves time for employees and administrators.
-- Minimizes errors from manual attendance processes.
-- Provides a centralized, secure, and real-time attendance management solution.
+## Features
+- **User Authentication:** Secure login and registration for users.
+- **Real-Time Face Detection:** Live video feed for face detection and recognition.
+- **Attendance Tracking:** Automatically mark attendance for recognized faces.
+- **Reporting System:** Generate daily attendance reports.
+- **Reset Mechanism:** Automatically resets attendance records every 24 hours.
 
 ---
 
-## ✨ Features
-
-- **Face Detection and Recognition**  
-  - Detects and identifies multiple faces in real-time.  
-  - Differentiates between employees and non-employees.
-
-- **Admin Panel**  
-  - Manage employee profiles and attendance records.  
-  - View and download attendance logs.
-
-- **Real-time Feedback**  
-  - Displays attendance remarks instantly on a webpage.
-
-- **Firebase Integration**  
-  - **Authentication**: Supports email/password login and Google OAuth.  
-  - **Realtime Database**: Stores attendance records with real-time updates.  
-  - **Cloud Storage**: Handles employee profile images and related files.
-
-- **Automated Camera Management**  
-  - Automatically shuts down the camera after 1 minute of inactivity.
-
-- **Lightweight Frontend**  
-  - Built with HTML, CSS, and JavaScript for a responsive and clean UI.
+## System Architecture
+1. **Frontend**: User-friendly interface for live camera feed and dashboard.
+2. **Backend**: Django-powered backend with robust data handling and APIs.
+3. **Face Recognition Core**: Uses OpenCV and face_recognition library for real-time recognition.
+4. **Database**: SQLite (default) or PostgreSQL for attendance records and user management.
+5. **Reports**: Attendance logs and CSV generation.
 
 ---
 
-## 🚀 How to Run the Project
+## Project Structure
+```
+smarttrack/
+├── manage.py
+├── requirements.txt
+├── static/
+│   ├── css/
+│   └── js/
+├── media/
+│   └── training_images/
+├── templates/
+├── user/
+├── dashboard/
+└── attendance/
+```
+
+### Key Directories
+- **`media/training_images/`**: Folder to store images for training face recognition.
+- **`templates/`**: HTML templates for frontend views.
+- **`attendance/`**: App for handling attendance logic.
+
+---
+
+## Setup Instructions
 
 ### Prerequisites
-1. Python (Version 3.8 or higher)
-2. Flask Framework
-3. Firebase Project (Configured for Authentication, Storage, and Realtime Database)
-4. Python libraries (listed in `requirements.txt`)
+- Python 3.8+
+- Virtual environment
+- Webcam access
+- Database (SQLite/PostgreSQL)
 
-### Steps to Run
-
-1. **Clone the Repository**  
+### Installation
+1. Clone the repository:
    ```bash
-   git clone https://github.com/your-repo/face-attendance-system.git
-   cd face-attendance-system
-   
-2. **Install Dependencies**
-    ```bash
-    pip install -r requirements.txt
+   git clone https://github.com/username/smarttrack.git
+   cd smarttrack
+   ```
+2. Create and activate a virtual environment:
+   ```bash
+   python -m venv venv
+   source venv/bin/activate   # On Windows: venv\Scripts\activate
+   ```
+3. Install dependencies:
+   ```bash
+   pip install -r requirements.txt
+   ```
+4. Configure the database in `settings.py`.
+5. Run migrations:
+   ```bash
+   python manage.py migrate
+   ```
+6. Start the development server:
+   ```bash
+   python manage.py runserver
+   ```
 
-3. **Set Up Firebase**
-    - Create a Firebase project and enable:
-    - Authentication (email/password and Google OAuth)
-    - Realtime Database
-    - Cloud Storage
-    - Download the Firebase Admin SDK credentials and place them in the project directory (e.g., **firebase-adminsdk.json**).
+### Face Recognition Setup
+1. Add training images in `media/training_images/` directory.
+2. Each person should have a folder with their name containing their images.
+3. Start encoding the training images:
+   ```bash
+   python manage.py encode_faces
+   ```
 
-4. **Configure Environment Variables**
-    Create a .env file in the root directory.
-    ```bash 
-    FLASK_APP=app.py
-    FLASK_ENV=development
-    FIREBASE_CONFIG_PATH=path/to/firebase-adminsdk.json
+---
 
-5. **Start the Server**
-    ```bash
-    flask run
+## Core Functionalities
+
+### Live Camera Feed
+- Accessed via `/video_feed/` endpoint.
+- Displays a live feed with real-time face detection and recognition.
+
+### Attendance Marking
+- Automatically marks attendance for recognized individuals.
+- Logs attendance in the database and a CSV file.
+
+### Dashboard
+- View daily attendance records.
+- Accessible via `/attendance/` endpoint.
+
+---
+
+## Security Measures
+- Firebase Authentication for user login.
+- Face encoding encryption for secure data storage.
+- CSRF protection in Django.
+- Session security to prevent hijacking.
+
+---
+
+
+## Future Enhancements
+- Add multi-camera support.
+- Integrate advanced analytics for attendance trends.
+- Support for mobile apps.
+
+---
+
+## Authors
+Developed by [nikeshh03] and contributors.
